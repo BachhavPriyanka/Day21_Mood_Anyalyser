@@ -2,31 +2,27 @@ package day2121;
 
 import static org.junit.Assert.*;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MoodAnalyserTest {
 
 	static MoodAnalyser mood;
 
-	@BeforeClass
-	public static void createMoodAnalyserObj() {
-		mood = new MoodAnalyser();
-	}
-	
-	@AfterClass
-	public static void nullObj() {
-		mood = null;
-	}
-
 	@Test
 	public void testAnalyseAbilityMethod_thenAssertionHappy() {
-		assertEquals("HAPPY", mood.analyseability("I am in Happy Mood"));
+		mood = new MoodAnalyser("I am in Happy Mood");
+		assertEquals("HAPPY", mood.analyseability());
 	}
 
 	@Test
 	public void testAnalyseAbilityMethod_thenAssertionSad() {
-		assertEquals("SAD", mood.analyseability("I am in Sad Mood"));
+		mood = new MoodAnalyser("I am in Sad Mood");
+		assertEquals("SAD", mood.analyseability());
+	}
+	
+	@Test
+	public void testgivenNullMoodShouldReturnHaappy_thenAssertionHappy() {
+		mood = new MoodAnalyser();
+		assertEquals("HAPPY", mood.analyseability());
 	}
 }
